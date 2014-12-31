@@ -31,10 +31,7 @@ fi
 AC_CHECK_LIB([daemon],[daemon_log], , AC_MSG_ERROR(libdaemon needed))
 AC_CHECK_LIB([pthread],[pthread_create], , AC_MSG_ERROR(pthread library needed))
 AC_CHECK_LIB([m],[exp], , AC_MSG_ERROR(maths library needed))
-PKG_CHECK_MODULES(
-    [POPT], [popt],
-    [LIBS="${POPT_LIBS} ${LIBS}"
-     AC_DEFINE([HAVE_LIBPOPT],[1],[Define to 1 if you have popt])])
+AC_CHECK_LIB([popt],[poptGetContext], , AC_MSG_ERROR(libpopt needed))
 
 # Look for piddir flag
 AC_ARG_WITH(piddir, [ --with-piddir=<pathname> Specify a pathname to a directory in which to write the PID file.], [
