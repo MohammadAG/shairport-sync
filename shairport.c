@@ -338,8 +338,10 @@ int main(int argc, char **argv) {
     config.userSuppliedLatency = 0; // zero means none supplied
     config.iTunesLatency = 99400; // this seems to work pretty well for iTunes from Version 10 (?) upwards-- two left-ear headphones, one from the iMac jack, one from an NSLU2 running a cheap "3D Sound" USB Soundcard
     config.AirPlayLatency = 88200; // this seems to work pretty well for AirPlay -- Syncs sound and vision on AppleTV, but also used for iPhone/iPod/iPad sources
-    config.resyncthreshold = 441*5; // this number of frames is 50 ms
-    config.timeout = 120; // this number of seconds to wait for [more] audio before switching to idle.
+    //config.resyncthreshold = 441*5; // this number of frames is 50 ms
+    config.resyncthreshold = 0; // Disabled due to static noise on low-end routers that can't use soxr
+    config.timeout = 0; // Disabled due to causing issues with swapping to calls and back
+    //config.timeout = 120; // this number of seconds to wait for [more] audio before switching to idle.
     config.buffer_start_fill = 220;
     config.port = 5000;
     config.packet_stuffing = ST_basic; // simple interpolation or deletion
