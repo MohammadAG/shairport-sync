@@ -48,13 +48,7 @@ AC_CHECK_LIB([m],[exp], , AC_MSG_ERROR(maths library needed))
 
 AC_MSG_RESULT(>>Including libpopt)
 if  test "x${with_pkg_config}" = xyes ; then
-  PKG_CHECK_MODULES(
-      [POPT], [popt],
-      [LIBS="${POPT_LIBS} ${LIBS}"
-       AC_DEFINE([HAVE_LIBPOPT],[1],[Define to 1 if you have popt])])
-else
   AC_CHECK_LIB([popt],[poptGetContext], , AC_MSG_ERROR(libpopt needed))
-  AC_DEFINE([HAVE_LIBPOPT],[1],[Define to 1 if you have popt])
 fi
 
 AC_ARG_WITH([dummy],[  --with-dummy = include the dummy audio back end ],[AC_MSG_RESULT(>>Including the dummy audio back end) AC_DEFINE([CONFIG_DUMMY], 1, [Needed by the compiler.]) ], )
